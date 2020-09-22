@@ -25,15 +25,15 @@ function usage() {
 function off() {
     brd=$1
     relay=$2
-    echo "`date`: Turning Brd $brd relay $relay OFF"
-    curl -d "{\"brd\": $brd, \"relays\": [{\"id\": $relay, \"state\": false}]}" http://$RELAY_HOST:$RELAY_HOST_PORT/jcmd
+    echo "`date`: Turning Brd $brd relay $relay ON, chassis OFF"
+    curl -d "{\"brd\": $brd, \"relays\": [{\"id\": $relay, \"state\": true}]}" http://$RELAY_HOST:$RELAY_HOST_PORT/jcmd
 }
 
 function on() {
     brd=$1
     relay=$2
-    echo "`date`: Turning Brd $brd relay $relay ON"
-    curl -d "{\"brd\": $brd, \"relays\": [{\"id\": $relay, \"state\": true}]}" http://$RELAY_HOST:$RELAY_HOST_PORT/jcmd
+    echo "`date`: Turning Brd $brd relay $relay OFF, chassis ON"
+    curl -d "{\"brd\": $brd, \"relays\": [{\"id\": $relay, \"state\": false}]}" http://$RELAY_HOST:$RELAY_HOST_PORT/jcmd
 }
 
 function toggle() {
